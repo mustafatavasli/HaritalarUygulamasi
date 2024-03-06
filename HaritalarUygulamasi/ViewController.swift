@@ -12,6 +12,9 @@ import CoreLocation
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var isimTextField: UITextField!
+    @IBOutlet weak var notTextField: UITextField!
+    
     var locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +24,29 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        // Kullanıcının haritada bir yere uzun süre basması işlemi
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(konumSec(gestureRecognizer:)))
+        
+        gestureRecognizer.minimumPressDuration = 3
+        mapView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    // .location için gestureRecognizer tekrar kullandık.
+    @objc func konumSec(gestureRecognizer : UILongPressGestureRecognizer) {
+        if gestureRecognizer.state == .began {
+            let dokunulanNokta = gestureRecognizer.location(in: mapView)
+            let dokunulanNoktaKoordinat = mapView.convert(dokunulanNokta, toCoordinateFrom: mapView)
+            
+            // Haritadaki yeri işaretleme
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = dokunulanNoktaKoordinat
+            annotation.title = isimTextField.text
+            annotation.subtitle = notTextField.text
+            
+            // Yer İşaretini Ekleme
+            mapView.addAnnotation(annotation)
+        }
     }
     
     // Kullanıcının konumunu alma işlemi
