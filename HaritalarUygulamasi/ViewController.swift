@@ -8,12 +8,16 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var isimTextField: UITextField!
     @IBOutlet weak var notTextField: UITextField!
+    
+    var secilenLatitude = Double()
+    var secilenLongitude = Double()
     
     var locationManager = CLLocationManager()
     override func viewDidLoad() {
@@ -38,6 +42,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             let dokunulanNokta = gestureRecognizer.location(in: mapView)
             let dokunulanNoktaKoordinat = mapView.convert(dokunulanNokta, toCoordinateFrom: mapView)
             
+            secilenLatitude = dokunulanNoktaKoordinat.latitude
+            secilenLongitude = dokunulanNoktaKoordinat.longitude
+            
             // Haritadaki yeri işaretleme
             let annotation = MKPointAnnotation()
             annotation.coordinate = dokunulanNoktaKoordinat
@@ -56,6 +63,28 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
+    }
+    
+    // Yer İşaretlerini Kaydetme İşlemi
+    @IBAction func kaydetButton(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let yeniYer = NSEntityDescription.insertNewObject(forEntityName: "Yer", into: context)
+        
+        yeniYer.setValue(isimTextField.text, forKey: "isim")
+        yeniYer.setValue(notTextField.text, forKey: "not")
+        yeniYer.setValue(secilenLatitude, forKey: "latitude")
+        yeniYer.setValue(secilenLongitude, forKey: "longitude")
+        yeniYer.setValue(UUID(), forKey: "id")
+        
+        do {
+            try context.save()
+            print("Kayıt Başarılı")
+        } catch {
+            print("Hata")
+        }
+
     }
 }
 

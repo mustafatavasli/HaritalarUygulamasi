@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDd-YB-a60">
-                                <rect key="frame" x="0.0" y="209" width="393" height="609"/>
+                                <rect key="frame" x="0.0" y="209" width="393" height="537"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="İsim Giriniz" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L5C-1T-yvf">
@@ -31,20 +31,30 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdD-k9-3SD">
+                                <rect key="frame" x="158" y="770" width="77" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Kaydet"/>
+                                <connections>
+                                    <action selector="kaydetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QlZ-UQ-0jQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="L5C-1T-yvf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="6Hg-0U-zhz"/>
-                            <constraint firstItem="cDd-YB-a60" firstAttribute="top" secondItem="zEf-yB-pkI" secondAttribute="bottom" constant="32" id="ACr-YN-sJM"/>
-                            <constraint firstItem="cDd-YB-a60" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="CBU-to-WH6"/>
-                            <constraint firstItem="zEf-yB-pkI" firstAttribute="top" secondItem="L5C-1T-yvf" secondAttribute="bottom" constant="26" id="DuO-5b-VUE"/>
-                            <constraint firstItem="zEf-yB-pkI" firstAttribute="centerX" secondItem="cDd-YB-a60" secondAttribute="centerX" id="MMw-Yt-ncM"/>
-                            <constraint firstItem="cDd-YB-a60" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Rrd-we-agf"/>
-                            <constraint firstItem="L5C-1T-yvf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XAD-1v-oDO"/>
-                            <constraint firstItem="L5C-1T-yvf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="71" id="cAv-Wt-I6k"/>
-                            <constraint firstItem="L5C-1T-yvf" firstAttribute="trailing" secondItem="zEf-yB-pkI" secondAttribute="trailing" id="goM-J4-jsZ"/>
-                            <constraint firstItem="L5C-1T-yvf" firstAttribute="leading" secondItem="zEf-yB-pkI" secondAttribute="leading" id="n45-r8-gBJ"/>
+                            <constraint firstItem="L5C-1T-yvf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ivt-Mt-81w"/>
+                            <constraint firstItem="L5C-1T-yvf" firstAttribute="trailing" secondItem="zEf-yB-pkI" secondAttribute="trailing" id="JtP-PC-zxG"/>
+                            <constraint firstItem="L5C-1T-yvf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="NUU-aC-KSo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZdD-k9-3SD" secondAttribute="bottom" constant="13" id="OmM-gJ-bVc"/>
+                            <constraint firstItem="zEf-yB-pkI" firstAttribute="top" secondItem="L5C-1T-yvf" secondAttribute="bottom" constant="26" id="Sz7-l3-aOn"/>
+                            <constraint firstItem="cDd-YB-a60" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="U0c-sB-Z9u"/>
+                            <constraint firstItem="cDd-YB-a60" firstAttribute="centerX" secondItem="ZdD-k9-3SD" secondAttribute="centerX" id="U2L-28-AJV"/>
+                            <constraint firstItem="L5C-1T-yvf" firstAttribute="leading" secondItem="zEf-yB-pkI" secondAttribute="leading" id="dwd-Yi-9Ue"/>
+                            <constraint firstItem="cDd-YB-a60" firstAttribute="top" secondItem="zEf-yB-pkI" secondAttribute="bottom" constant="32" id="fTC-oK-Elh"/>
+                            <constraint firstItem="zEf-yB-pkI" firstAttribute="centerX" secondItem="cDd-YB-a60" secondAttribute="centerX" id="gdE-0b-68n"/>
+                            <constraint firstItem="L5C-1T-yvf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="71" id="tNb-E0-Zg2"/>
+                            <constraint firstItem="ZdD-k9-3SD" firstAttribute="top" secondItem="cDd-YB-a60" secondAttribute="bottom" constant="24" id="ytq-RN-1ML"/>
                         </constraints>
                     </view>
                     <connections>
